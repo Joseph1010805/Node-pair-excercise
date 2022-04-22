@@ -8,6 +8,11 @@ process.stdin.on('data', (data) => {
   if (cmd === "ls") {
     require('./ls.js');
   }
-
+  if (cmd.includes("cat")) {
+    let catArr = cmd.split(" ")
+    let fileName = catArr[1]
+    const cat = require('./cat.js')
+    cat(fileName)
+  }
   process.stdout.write(`\nprompt >`)
 })
